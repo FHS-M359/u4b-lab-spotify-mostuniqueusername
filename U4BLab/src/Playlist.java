@@ -12,7 +12,7 @@ public class Playlist {
 
     public void readSongsFromFile(String name) {
         try {
-            Scanner fileReader = new Scanner(new File("spotify_unique_years_artists.txt"));
+            Scanner fileReader = new Scanner(new File(name));
 
             while (fileReader.hasNextLine()) {
 
