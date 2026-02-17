@@ -15,5 +15,32 @@ public class Song {
     this.genre = genre;
   }
 
-  
+  public String getTitle() {
+      return title;
+  }
+
+  public String getArtist() {
+    return artist;
+  }
+
+  public String getAlbum() {
+    return album;
+  }
+
+  public int getLength() {
+    return length;
+  }
+
+  public int getYear() {
+    return year;
+  }
+
+  public String getGenre() {
+    return genre;
+  }
+
+  public String toString() {
+    return String.format("%-22s %-20s %-30s %-6d %-12s",
+              title, artist, album, releaseYear, genre);
+  }
 }
