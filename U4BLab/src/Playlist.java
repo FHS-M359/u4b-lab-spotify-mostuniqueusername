@@ -39,18 +39,32 @@ public class Playlist {
     }
 
     public String toString() {
-
         String result = "";
 
         result += String.format("%-22s %-20s %-30s %-6s %-12s%n",
                 "Title", "Artist", "Album", "Year", "Genre");
 
-        result += "-------------------------------------------------------------------------------\n";
+        result += "---------------------------------------------------------------------------------------\n";
 
         for (Song song : songs) {
             result += song.toString() + "\n";
         }
 
         return result;
+    }
+
+    public void searchByGenre(String genreSearching) {
+        boolean searched = false;
+
+        for (int i = 0; i < songs.size(); i++) {
+            String returned = songs.get(i).getGenre();
+            if (returned.equalsIgnoreCase(genreSearching)) {
+                System.out.println(songs.get(i));
+                searched = true;
+            }
+        }
+        if (!searched) {
+            System.out.println("No songs were found in that genre.");
+        }
     }
 }
