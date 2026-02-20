@@ -67,4 +67,38 @@ public class Playlist {
             System.out.println("No songs were found in that genre.");
         }
     }
+
+    public void sortArtistAZ() {
+        for (int i = 0; i < songs.size() - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < songs.size(); j++) {
+                String artistJ = songs.get(j).getArtist();
+                String artistMin = songs.get(minIndex).getArtist();
+                if (artistJ.compareTo(artistMin) < 0) {
+                    minIndex = j;
+                }
+            }
+
+            Song temp = songs.get(i);
+            songs.set(i, songs.get(minIndex));
+            songs.set(minIndex, temp);
+        }
+    }
+
+    public void sortArtistZA() {
+        for (int i = 0; i < songs.size() - 1; i++) {
+            int maxIndex = i;
+            for (int j = i + 1; j < songs.size(); j++) {
+                String artistJ = songs.get(j).getArtist();
+                String artistMin = songs.get(maxIndex).getArtist();
+                if (artistJ.compareTo(artistMin) > 0) {
+                    maxIndex = j;
+                }
+            }
+
+            Song temp = songs.get(i);
+            songs.set(i, songs.get(maxIndex));
+            songs.set(maxIndex, temp);
+        }
+    }
 }
