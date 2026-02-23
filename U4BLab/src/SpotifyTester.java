@@ -12,50 +12,8 @@ public class SpotifyTester {
     public static int QUIT = 7;
 
     public static void main(String[] args) {
-
-        Playlist playlist = new Playlist();
-        playlist.readSongsFromFile("U4BLab/spotify_unique_years_artists.txt");
-        System.out.println(playlist);
-
         Scanner input = new Scanner(System.in);
         int choice = getValidChoice(input);
-
-        while (choice != QUIT) {
-            printMenu();
-
-            if (choice == SORT_AZ) {
-                playlist.sortArtistAZ();
-                System.out.println(playlist);
-
-            }
-            else if (choice == SORT_ZA) {
-                playlist.sortArtistZA();
-                System.out.println(playlist);
-
-            }
-            else if (choice == SORT_YEAR_OLD_NEW) {
-                playlist.sortYearOldNew();
-                System.out.println(playlist);
-
-            }
-            else if (choice == SORT_YEAR_NEW_OLD) {
-                playlist.sortYearNewOld();
-                System.out.println(playlist);
-
-            }
-            else if (choice == SEARCH_GENRE) {
-                System.out.println("What genre are you searching for?");
-                String genreSearching = input.nextLine();
-                playlist.searchByGenre(genreSearching);
-
-            }
-            else if (choice == DISPLAY_ALL) {
-                System.out.println(playlist);
-            }
-            else if (choice == QUIT) {
-                System.out.println("Goodbye!");
-            }
-        }
 
         input.close();
     }
@@ -77,12 +35,50 @@ public class SpotifyTester {
 
         while (!valid) {
             try {
-                System.out.print("Enter your choice (1-7): ");
+                System.out.println("\n--- Spotify Menu ---");
+                System.out.println("1. Sort by Artist A-Z");
+                System.out.println("2. Sort by Artist Z-A");
+                System.out.println("3. Sort by Year Old-New");
+                System.out.println("4. Sort by Year New-Old");
+                System.out.println("5. Search by Genre");
+                System.out.println("6. Display All Songs");
+                System.out.println("7. Quit");
+                System.out.println("Enter your choice (1-7): ");
                 choice = Integer.parseInt(input.nextLine());
-                input.nextLine();
+
+                Playlist playlist = new Playlist();
+                playlist.readSongsFromFile("U4BLab/spotify_unique_years_artists.txt");
 
                 if (choice >= 1 && choice <= 7) {
                     valid = true;
+
+                    if (choice == SORT_AZ) {
+                        playlist.sortArtistAZ();
+                        System.out.println(playlist);
+                    }
+                    else if (choice == SORT_ZA) {
+                        playlist.sortArtistZA();
+                        System.out.println(playlist);
+                    }
+                    else if (choice == SORT_YEAR_OLD_NEW) {
+                        playlist.sortYearOldNew();
+                        System.out.println(playlist);
+                    }
+                    else if (choice == SORT_YEAR_NEW_OLD) {
+                        playlist.sortYearNewOld();
+                        System.out.println(playlist);
+                    }
+                    else if (choice == SEARCH_GENRE) {
+                        System.out.println("What genre are you searching for?");
+                        String genreSearching = input.nextLine();
+                        playlist.searchByGenre(genreSearching);
+                    }
+                    else if (choice == DISPLAY_ALL) {
+                        System.out.println(playlist);
+                    }
+                    else if (choice == QUIT) {
+                        System.out.println("Goodbye!");
+                    }
                 }
                 else {
                     System.out.println("Invalid option. Try again.");
