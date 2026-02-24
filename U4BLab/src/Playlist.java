@@ -101,4 +101,33 @@ public class Playlist {
             songs.set(maxIndex, temp);
         }
     }
+
+    public void sortYearOldNew() {
+        for (int i = 1; i < songs.size(); i++) {
+            Song temp = songs.get(i);
+            int position = i;
+            while (position > 0 &&
+                    songs.get(position - 1).getYear() > temp.getYear()) {
+                songs.set(position, songs.get(position - 1));
+                position--;
+            }
+
+            songs.set(position, temp);
+        }
+    }
+
+    public void sortYearNewOld(){
+        for (int i = 1; i < songs.size(); i++) {
+            Song temp = songs.get(i);
+            int position = i;
+            while (position > 0 &&
+                    songs.get(position - 1).getYear() < temp.getYear()) {
+
+                songs.set(position, songs.get(position - 1));
+                position--;
+            }
+
+            songs.set(position, temp);
+        }
+    }
 }
