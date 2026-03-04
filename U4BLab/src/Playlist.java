@@ -10,6 +10,12 @@ public class Playlist {
         this.songs = songs;
     }
 
+    /**
+     * Reads song data from a file and creates Song objects.
+     * Each line of the file is split using commas.
+     *
+     * @param name The file name containing song data.
+     */
     public void readSongsFromFile(String name) {
         try {
             Scanner fileReader = new Scanner(new File(name));
@@ -38,21 +44,33 @@ public class Playlist {
         }
     }
 
+    /**
+     * Returns a formatted table of all songs in the playlist.
+     */
     public String toString() {
         String result = "";
 
-        result += String.format("%-22s %-20s %-30s %-6s %-12s%n",
+        result += String.format("%-22s %-20s %-30s %-6s %-12s\n",
                 "Title", "Artist", "Album", "Year", "Genre");
-
         result += "---------------------------------------------------------------------------------------\n";
 
-        for (Song song : songs) {
-            result += song.toString() + "\n";
+        for (Song s : songs) {
+            result += String.format("%-22s %-20s %-30s %-6d %-12s\n",
+                    s.getTitle(),
+                    s.getArtist(),
+                    s.getAlbum(),
+                    s.getYear(),
+                    s.getGenre());
         }
 
         return result;
     }
 
+    /**
+     * Searches for and displays songs matching a specific genre.
+     *
+     * @param genreSearching Genre entered by user.
+     */
     public void searchByGenre(String genreSearching) {
         boolean searched = false;
 
@@ -68,6 +86,10 @@ public class Playlist {
         }
     }
 
+    /**
+     * Sorts songs alphabetically by artist name (A-Z)
+     * using Selection Sort.
+     */
     public void sortArtistAZ() {
         for (int i = 0; i < songs.size() - 1; i++) {
             int minIndex = i;
@@ -85,6 +107,10 @@ public class Playlist {
         }
     }
 
+    /**
+     * Sorts songs alphabetically by artist name (Z-A)
+     * using Selection Sort.
+     */
     public void sortArtistZA() {
         for (int i = 0; i < songs.size() - 1; i++) {
             int maxIndex = i;
@@ -102,6 +128,10 @@ public class Playlist {
         }
     }
 
+    /**
+     * Sorts songs by release year (Old to New)
+     * using Insertion Sort.
+     */
     public void sortYearOldNew() {
         for (int i = 1; i < songs.size(); i++) {
             Song temp = songs.get(i);
@@ -116,6 +146,10 @@ public class Playlist {
         }
     }
 
+    /**
+     * Sorts songs by release year (New to Old)
+     * using Insertion Sort.
+     */
     public void sortYearNewOld(){
         for (int i = 1; i < songs.size(); i++) {
             Song temp = songs.get(i);
