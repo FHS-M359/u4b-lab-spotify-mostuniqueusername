@@ -6,6 +6,10 @@ public class Song {
     private int year;
     private String genre;
 
+    /**
+     * Constructor
+     * Initializes all instance variables when a Song object is created.
+     */
     public Song(String title, String artist, String album, int length, int year, String genre){
         this.title = title;
         this.artist = artist;
@@ -15,6 +19,7 @@ public class Song {
         this.genre = genre;
     }
 
+    // Get Methods
     public String getTitle() {
         return title;
     }
@@ -39,6 +44,7 @@ public class Song {
         return genre;
     }
 
+    // Set Methods
     public void setTitle(String title) {
         this.title = title;
     }
@@ -63,6 +69,10 @@ public class Song {
         this.genre = genre;
     }
 
+    /**
+     * Returns a formatted row representation of a Song.
+     * Used when displaying songs in table format.
+     */
     public String toString() {
         return String.format("%-22s %-20s %-30s %-6d %-12s",
                 title, artist, album, year, genre);
